@@ -1,28 +1,18 @@
 import { Component, OnInit } from '@angular/core'
-import { Menubar } from 'primeng/menubar'
-import { BadgeModule } from 'primeng/badge'
-import { Avatar, AvatarModule } from 'primeng/avatar'
-import { InputText } from 'primeng/inputtext'
-import { Ripple, RippleModule } from 'primeng/ripple'
 import { CommonModule } from '@angular/common'
-import { MenuItem } from 'primeng/api'
 import { RouterLink, RouterOutlet } from '@angular/router'
+import { NgIcon, provideIcons } from '@ng-icons/core'
+import { matReceipt } from '@ng-icons/material-icons/baseline'
 
 @Component({
     selector: 'app-navbar',
-    imports: [
-        Menubar,
-        BadgeModule,
-        AvatarModule,
-        RippleModule,
-        CommonModule,
-        RouterLink,
-    ],
+    imports: [CommonModule, NgIcon, RouterLink],
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.scss',
+    providers: [provideIcons({ matReceipt })],
 })
 export class NavbarComponent implements OnInit {
-    items: MenuItem[] = []
+    items: { label: string; link: string }[] = []
 
     ngOnInit(): void {
         this.items = [
